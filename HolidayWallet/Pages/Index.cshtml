@@ -1,0 +1,20 @@
+﻿@page
+@model IndexModel
+@{
+	ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+	<h1 class="display-4">Holiday Wallet</h1>
+
+	<a class="btn btn-primary" asp-area="Identity"  asp-page="/Account/Register">Register</a>
+	<a class="btn btn-primary" asp-area="Identity"  asp-page="/Account/Login">Login</a>
+</div>
+
+<div>
+	<a asp-page="./Categories/Index">Categories</a>
+	<a asp-page="./Currencies/Index">Currencies</a>
+	<a asp-page="./Expenses/Index">Expenses</a>
+	<a asp-page="./Holidays/Index">Holidays</a>
+</div>
+
