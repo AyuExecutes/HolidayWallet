@@ -10,9 +10,9 @@
         public required string Category { get; set; }
         public required decimal Amount { get; set; }
         public int HolidayId { get; set; }
-        public required Holiday Holiday { get; set; }       
+        public Holiday? Holiday { get; set; }       
         public int CurrencyId { get; set; }
-        public required Currency Currency { get; set; }     
+        public Currency? Currency { get; set; }     
 
 
     }

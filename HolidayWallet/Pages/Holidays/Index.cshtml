@@ -2,59 +2,29 @@
 @model HolidayWallet.Pages.Holidays.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Holidays";
 }
 
-<h1>Index</h1>
+<h1>Choose Your Holiday Destination</h1>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Holiday[0].Destination)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Holiday[0].StartDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Holiday[0].EndDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Holiday[0].Budget)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Holiday[0].Currency)
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model.Holiday) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Destination)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Budget)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Currency)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                 <a asp-page="/Expenses/Create" asp-route-holidayId="@item.Id">@item.Destination</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+<p>
+    <a asp-page="Create">Add New Holiday Destination</a>
+</p>

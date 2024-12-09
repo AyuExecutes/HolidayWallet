@@ -12,17 +12,25 @@ namespace HolidayWallet.Pages.Expenses
 {
     public class CreateModel : PageModel
     {
-        private readonly HolidayWallet.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public CreateModel(HolidayWallet.Data.ApplicationDbContext context)
+        public CreateModel(ApplicationDbContext context)
         {
             _context = context;
         }
 
+        [BindProperty(SupportsGet = true)]
+        public int HolidayId { get; set; }
+
         public IActionResult OnGet()
         {
-        ViewData["CurrencyId"] = new SelectList(_context.Set<Currency>(), "Id", "Id");
-        ViewData["HolidayId"] = new SelectList(_context.Holiday, "Id", "Id");
+            Holiday? holiday = _context.Holiday.FirstOrDefault(h => h.Id == HolidayId);
+
+            ViewData["HolidayName"] = holiday?.Destination;
+         
+            ViewData["CurrencyList"] = new SelectList(_context.Set<Currency>(), "Id", "FromCode");
+            ViewData["HolidayId"] = holiday?.Id;
+
             return Page();
         }
 
